@@ -1,0 +1,17 @@
+# Template information section
+name: "mvvm_rx_ios"
+summary: "Swift MVVM module template."
+author: "Okun Alexey"
+version: "0.1.0"
+license: "MIT"
+
+# The declarations for code files
+
+code_files:
+
+# ViewController
+- {name: ViewController.swift, path: Code/ViewController.swift.liquid, custom_name: "{{ module_info.name }}ViewController.swift"}
+
+# ViewModel
+- {name: ViewModel.swift, path: Code/ViewModel.swift.liquid, custom_name: "{{ module_info.name }}ViewModel.swift"}
+

@@ -1,0 +1,79 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Differentiator
+import RxCocoa
+import RxSwift
+import RxDataSources
+import Moya
+
+class {{ module_info.name }}ViewModel {
+    
+    // MARK: - Public Properties
+    let sections = BehaviorRelay<[SectionModel]>(value: [])
+
+    // MARK: - Private Properties
+
+    // MARK: - Initializers
+
+    // MARK: - Public methods
+
+    // MARK: - Private Methods
+
+}
+
+// MARK: - RxDataSource
+extension {{ module_info.name }}ViewModel {
+    
+    enum SectionModel: AnimatableSectionModelType {
+        case blankSection(items: [Item])
+        
+        typealias Item = ItemModel
+        typealias Identity = String
+        
+        var items: [Item] {
+            switch self {
+            case .analyticSection(let items): return items.map { $0 }
+            }
+        }
+        
+        init(original: SectionModel, items: [Item]) {
+            switch original {
+            case .analyticSection: self = .analyticSection(items: items)
+            }
+        }
+        
+        var identity: Identity {
+            switch self {
+            case .analyticSection: return "fundsSection"
+            }
+        }
+    }
+    
+    enum ItemModel: Equatable, IdentifiableType {
+        case blankItem
+        
+        typealias Identity = String
+        
+        var identity: Identity {
+            switch self {
+            case .blankItem:
+                return "blankItem"
+            }
+        }
+        
+        static func == (lhs: ItemModel, rhs: ItemModel) -> Bool {
+            return lhs.identity == rhs.identity
+        }
+    }
+    
+    func generatePifSection() -> [SectionModel] {
+        var sections: [SectionModel] = []
+        return sections
+    }
+}
